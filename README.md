@@ -60,13 +60,14 @@ O principal diferencial técnico do projeto está na sua arquitetura **Offline-F
 </p>
 
 ### 📌 Detalhamento Técnico
-- **Frontend:** Next.js 14/15 (App Router)
+- **Frontend:** Next.js 16 (App Router)
+- **UI:** React 19
 - **Linguagem:** TypeScript
-- **Estilização:** Tailwind CSS
+- **Estilização:** Tailwind
 - **Backend / BaaS:** Supabase (PostgreSQL + Auth)
 - **PWA:** Service Workers + Manifest
-- **Exportação:** jsPDF / jsPDF-AutoTable e Excel
 - **Estado Global:** Context API + Hooks customizados
+- **Exportação:** jsPDF / jsPDF-AutoTable (PDF) + ExcelJS (Excel)
 - **Deploy:** Vercel
 
 ---
