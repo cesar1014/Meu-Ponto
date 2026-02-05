@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useMemo } from 'react';
 import { usePonto } from '@/contexts/PontoContext';
@@ -125,7 +125,7 @@ function PontosTab({
         setError(null);
 
         if (!justificativa.trim()) {
-            setError('Justificativa é obrigatória.');
+            setError('Justificativa Ã© obrigatÃ³ria.');
             return;
         }
 
@@ -201,7 +201,7 @@ function PontosTab({
 
             <div className="space-y-2">
                 <div className="text-xs font-medium" style={{ color: 'var(--muted2)' }}>
-                    Justificativa (obrigatória)
+                    Justificativa (obrigatÃ³ria)
                 </div>
                 <textarea
                     value={justificativa}
@@ -260,7 +260,7 @@ function HorasTab({
         setError(null);
 
         if (!justificativa.trim()) {
-            setError('Justificativa é obrigatória.');
+            setError('Justificativa Ã© obrigatÃ³ria.');
             return;
         }
 
@@ -276,7 +276,7 @@ function HorasTab({
         }
 
         if (totalMinutos > 480) {
-            setError('Ajuste máximo de 8 horas por operação.');
+            setError('Ajuste mÃ¡ximo de 8 horas por operaÃ§Ã£o.');
             return;
         }
 
@@ -396,12 +396,12 @@ function HorasTab({
             {/* Justificativa */}
             <div className="space-y-2">
                 <div className="text-xs font-medium" style={{ color: 'var(--muted2)' }}>
-                    Justificativa (obrigatória)
+                    Justificativa (obrigatÃ³ria)
                 </div>
                 <textarea
                     value={justificativa}
                     onChange={(e) => setJustificativa(e.target.value)}
-                    placeholder="Ex: Hora extra não registrada no sistema..."
+                    placeholder="Ex: Hora extra nÃ£o registrada no sistema..."
                     rows={3}
                     className="w-full rounded-2xl border px-3 py-2 text-sm outline-none resize-none"
                     style={{ borderColor: 'var(--border)', background: 'var(--card2)', color: 'var(--text)' }}
@@ -567,7 +567,7 @@ export function AjustesRetroativosView({ onBack }: { onBack: () => void }) {
                     className="rounded-2xl p-3 text-sm"
                     style={{ background: 'rgba(34,197,94,0.15)', color: 'var(--pos)' }}
                 >
-                    ✓ {successMessage}
+                    âœ“ {successMessage}
                 </div>
             )}
 
@@ -609,7 +609,7 @@ export function AjustesRetroativosView({ onBack }: { onBack: () => void }) {
                     active={tab === 'historico'}
                     onClick={() => setTab('historico')}
                     icon={<History className="w-4 h-4" />}
-                    label="Histórico"
+                    label="HistÃ³rico"
                 />
             </div>
 
@@ -635,3 +635,4 @@ export function AjustesRetroativosView({ onBack }: { onBack: () => void }) {
         </div>
     );
 }
+

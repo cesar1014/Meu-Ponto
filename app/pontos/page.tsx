@@ -1,4 +1,4 @@
-'use client';
+ï»¿'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -69,14 +69,14 @@ const FILTROS_SALDO: { id: FiltroSaldo; label: string }[] = [
   { id: 'ATESTADO', label: 'Atestado' },
 ];
 
-// Filtro de período
+// Filtro de perÃ­odo
 type FiltroPeriodo = '5_DIAS' | 'SEMANA' | 'MES' | '60_DIAS' | 'TODOS';
 const FILTROS_PERIODO: { id: FiltroPeriodo; label: string }[] = [
   { id: '5_DIAS', label: '5 dias' },
   { id: 'SEMANA', label: 'Semana' },
-  { id: 'MES', label: 'Mês' },
+  { id: 'MES', label: 'MÃªs' },
   { id: '60_DIAS', label: '60 dias' },
-  { id: 'TODOS', label: 'Todo período' },
+  { id: 'TODOS', label: 'Todo perÃ­odo' },
 ];
 
 type Modo = 'DIAS' | 'PONTOS';
@@ -218,7 +218,7 @@ function Bars15({
             const hasWorked = worked > 0;
             const isMuted = isFuture || (isFolga && !hasWorked);
             const baseColor = isMuted ? 'var(--muted2)' : worked >= meta ? 'var(--pos)' : 'var(--neg)';
-            const title = `${fmtBR(d.iso)} • Trab ${formatarMinutosSemSinal(worked)}${meta > 0 ? ` / Meta ${formatarMinutosSemSinal(meta)}` : ''
+            const title = `${fmtBR(d.iso)} â€¢ Trab ${formatarMinutosSemSinal(worked)}${meta > 0 ? ` / Meta ${formatarMinutosSemSinal(meta)}` : ''
               }`;
 
             if ((meta === 0 && worked === 0) || (isFuture && worked === 0)) {
@@ -345,7 +345,7 @@ function PontosContent() {
   const [filtroDia, setFiltroDia] = useState<FiltroDia>('TODOS');
   const [filtroSaldo, setFiltroSaldo] = useState<FiltroSaldo>('TODOS');
 
-  // Bulk delete (seleção múltipla)
+  // Bulk delete (seleÃ§Ã£o mÃºltipla)
   const [modoSelecao, setModoSelecao] = useState(false);
   const [diasSelecionados, setDiasSelecionados] = useState<Set<string>>(new Set());
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -374,7 +374,7 @@ function PontosContent() {
   const [toast, setToast] = useState<{ message: string; tone: 'success' | 'warning' | 'error' } | null>(null);
   const toastTimerRef = useRef<number | null>(null);
 
-  // Filtro de período
+  // Filtro de perÃ­odo
   const [filtroPeriodo, setFiltroPeriodo] = useState<FiltroPeriodo>('5_DIAS');
 
   const hojeISO = useMemo(() => dateKeyLocal(), []);
@@ -798,7 +798,7 @@ function PontosContent() {
           onOpenConfig={() => setOpenCfg(true)}
         />
 
-        {/* Layout PC: sidebar sticky + conteúdo */}
+        {/* Layout PC: sidebar sticky + conteÃºdo */}
         <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(300px,360px)_1fr] xl:grid-cols-[minmax(360px,420px)_1fr]">
           {/* Sidebar */}
           <div className="space-y-4 lg:sticky lg:top-6 lg:self-start">
@@ -844,8 +844,8 @@ function PontosContent() {
                   ))}
                 </div>
 
-                {/* Filtro de período */}
-                <div className="mt-4 text-sm font-semibold">Período</div>
+                {/* Filtro de perÃ­odo */}
+                <div className="mt-4 text-sm font-semibold">PerÃ­odo</div>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {FILTROS_PERIODO.map((f) => (
                     <button
@@ -899,10 +899,10 @@ function PontosContent() {
                 {/* Saldo */}
                 <div className="mt-3 rounded-2xl border p-3 text-xs" style={{ borderColor: 'var(--border)', background: 'var(--card2)', color: 'var(--muted2)' }}>
                   Saldo 2026 agora: <span style={{ color: saldoTotal.saldoMinutos >= 0 ? 'var(--pos)' : 'var(--neg)' }}>{formatarMinutos(saldoTotal.saldoMinutos)}</span>
-                  <span className="ml-2 opacity-80">• faltas: {saldoTotal.faltas}</span>
+                  <span className="ml-2 opacity-80">â€¢ faltas: {saldoTotal.faltas}</span>
                 </div>
 
-                {/* Seleção múltipla */}
+                {/* SeleÃ§Ã£o mÃºltipla */}
                 <div className="mt-3">
                   {!modoSelecao ? (
                     <button
@@ -971,14 +971,14 @@ function PontosContent() {
                 </div>
 
                 <div className="mt-3 text-xs" style={{ color: 'var(--muted2)' }}>
-                  Dica: aqui você filtra *batida por batida*.
+                  Dica: aqui vocÃª filtra *batida por batida*.
                 </div>
               </>
               )}
             </div>
           </div>
 
-          {/* Conteúdo principal */}
+          {/* ConteÃºdo principal */}
           <div className="space-y-3">
             {diasFiltrados.length === 0 ? (
               <div
@@ -1006,13 +1006,13 @@ function PontosContent() {
 
                 const entradaPonto = d.pontosDia.find((p) => p.tipo === 'ENTRADA');
                 const saidaPonto = d.pontosDia.find((p) => p.tipo === 'SAIDA');
-                const entradaLabel = entradaPonto ? fmtTime(new Date(entradaPonto.atISO)) : '—';
-                const saidaLabel = saidaPonto ? fmtTime(new Date(saidaPonto.atISO)) : '—';
+                const entradaLabel = entradaPonto ? fmtTime(new Date(entradaPonto.atISO)) : 'â€”';
+                const saidaLabel = saidaPonto ? fmtTime(new Date(saidaPonto.atISO)) : 'â€”';
                 const resumoHorario = isAbonado
                   ? 'Abonado'
                   : d.pontosDia.length === 0
                     ? 'Sem pontos'
-                    : `Entrada ${entradaLabel} • Saída ${saidaLabel}`;
+                    : `Entrada ${entradaLabel} â€¢ SaÃ­da ${saidaLabel}`;
                 const dayDate = new Date(`${d.iso}T12:00:00`);
                 const isWeekend = dayDate.getDay() === 0 || dayDate.getDay() === 6;
                 const weekdayLabel = new Intl.DateTimeFormat('pt-BR', { weekday: 'short' })
@@ -1066,7 +1066,7 @@ function PontosContent() {
                     }}
                   >
                     <div className="flex items-start gap-3">
-                      {/* Checkbox para seleção */}
+                      {/* Checkbox para seleÃ§Ã£o */}
                       {modoSelecao && (
                         <button
                           onClick={(e) => toggleSelecaoDia(d.iso, e)}
@@ -1105,7 +1105,7 @@ function PontosContent() {
                                   background: 'var(--medicalBgStrong)',
                                   color: 'var(--medical)',
                                 }}
-                                title="Dia abonado por atestado médico"
+                                title="Dia abonado por atestado mÃ©dico"
                               >
                                 <HeartPulse className="h-3.5 w-3.5" />
                                 Atestado
@@ -1125,7 +1125,7 @@ function PontosContent() {
                             ) : null}
                           </div>
 
-                          {/* mini resumo dos horários (bem pequeno) */}
+                          {/* mini resumo dos horÃ¡rios (bem pequeno) */}
                           {d.pontosDia.length > 0 ? (
                             <div className="mt-2 flex flex-wrap gap-2 text-[11px]" style={{ color: 'var(--muted2)' }}>
                               {TIPOS_DIA.map((t) => {
@@ -1136,7 +1136,7 @@ function PontosContent() {
                                     className="rounded-full border px-2 py-[2px]"
                                     style={{ borderColor: 'var(--border)', background: 'var(--card2)' }}
                                   >
-                                    {LABEL_TIPOS[t]}: {p ? fmtTime(new Date(p.atISO)) : '—'}
+                                    {LABEL_TIPOS[t]}: {p ? fmtTime(new Date(p.atISO)) : 'â€”'}
                                   </span>
                                 );
                               })}
@@ -1153,7 +1153,7 @@ function PontosContent() {
                           </div>
                           {isAbonado ? null : extraMin === null ? (
                             <div className="text-xs" style={{ color: 'var(--muted2)' }}>
-                              Meta não configurada
+                              Meta nÃ£o configurada
                             </div>
                           ) : (
                             <div className="text-xs font-semibold" style={{ color: extraColor }}>
@@ -1285,7 +1285,7 @@ function PontosContent() {
                                     color: 'var(--muted)',
                                   }}
                                 >
-                                  Nenhum ajuste lançado.
+                                  Nenhum ajuste lanÃ§ado.
                                 </div>
                               ) : (
                                 ajustesDia.map((a) => (
@@ -1366,7 +1366,7 @@ function PontosContent() {
                                       <div className="text-sm font-medium">{LABEL_TIPOS[p.tipo]}</div>
                                       <div className="text-xs" style={{ color: 'var(--muted2)' }}>
                                         {fmtTime(new Date(p.atISO))}
-                                        {p.obs ? <span className="ml-2 opacity-80">• {p.obs}</span> : null}
+                                        {p.obs ? <span className="ml-2 opacity-80">â€¢ {p.obs}</span> : null}
                                       </div>
                                     </div>
 
@@ -1436,13 +1436,13 @@ function PontosContent() {
           marcoAtual={config.marco}
         />
 
-        {/* Modal Confirmação Delete */}
+        {/* Modal ConfirmaÃ§Ã£o Delete */}
         <ModalBase aberto={confirmDelete} aoFechar={() => setConfirmDelete(false)}>
           <div className="text-center">
             <Trash2 className="mx-auto h-12 w-12" style={{ color: 'var(--neg)' }} />
             <div className="mt-4 text-lg font-semibold">Apagar {diasSelecionados.size} dias?</div>
             <div className="mt-2 text-sm" style={{ color: 'var(--muted2)' }}>
-              Esta ação vai remover todos os pontos dos dias selecionados. Não pode ser desfeita.
+              Esta aÃ§Ã£o vai remover todos os pontos dos dias selecionados. NÃ£o pode ser desfeita.
             </div>
             <div className="mt-6 grid grid-cols-2 gap-2">
               <button
@@ -1745,7 +1745,7 @@ function ModalMarcoZero({
 
       <div className="mt-4 rounded-2xl border p-3" style={{ borderColor: 'var(--border)', background: 'var(--card2)' }}>
         <div className="text-xs" style={{ color: 'var(--muted2)' }}>
-          A contagem de saldo vai começar a partir dessa data, ignorando dias anteriores.
+          A contagem de saldo vai comeÃ§ar a partir dessa data, ignorando dias anteriores.
         </div>
       </div>
 
@@ -1776,7 +1776,7 @@ function ModalMarcoZero({
               color: !isNegativo ? 'var(--accentText)' : 'var(--text)',
             }}
           >
-            + Crédito
+            + CrÃ©dito
           </button>
           <button
             onClick={() => setIsNegativo(true)}
@@ -1787,7 +1787,7 @@ function ModalMarcoZero({
               color: isNegativo ? 'var(--accentText)' : 'var(--text)',
             }}
           >
-            - Débito
+            - DÃ©bito
           </button>
           <div className="hidden sm:block" />
         </div>
@@ -1834,5 +1834,6 @@ function ModalMarcoZero({
     </ModalBase>
   );
 }
+
 
 

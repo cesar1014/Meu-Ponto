@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import {
   AjusteBanco,
@@ -10,7 +10,7 @@ import {
 } from './pontoStore';
 import { dateKeyLocal, toDateKey } from './dates';
 
-// --- CONFIGURAÇÕES ---
+// --- CONFIGURAÃ‡Ã•ES ---
 const OCULTAR_DIAS_SEM_ATIVIDADE = true;
 const INCLUIR_COLUNA_EXTRAS = true;
 
@@ -63,7 +63,7 @@ function extrairBatidasEmColunas(pontos: Ponto[], hasAtestado: boolean) {
   const saida = horarios[3] ?? '-';
   const rest = horarios.slice(4);
 
-  const extrasParts = rest.length ? rest.map((h) => `• ${h}`) : [];
+  const extrasParts = rest.length ? rest.map((h) => `â€¢ ${h}`) : [];
   if (hasAtestado) {
     extrasParts.push('Atestado');
   }
@@ -147,7 +147,7 @@ function downloadBlob(filename: string, mime: string, data: BlobPart) {
   URL.revokeObjectURL(url);
 }
 
-// Renderiza o Gráfico para Imagem
+// Renderiza o GrÃ¡fico para Imagem
 function renderChartToBase64(rows: RelatorioRow[], title: string): string | null {
   if (typeof document === 'undefined') return null;
   if (rows.length === 0) return null;
@@ -218,18 +218,18 @@ function renderChartToBase64(rows: RelatorioRow[], title: string): string | null
 }
 
 /**
- * Função de Estilo Principal
+ * FunÃ§Ã£o de Estilo Principal
  */
 function estilizarTabela(sheet: any, rows: RelatorioRow[], startRow: number) {
-  // Definição dinâmica das colunas
-  const headersBase = ['Data', 'Entrada', 'Saída (Almoço)', 'Volta (Almoço)', 'Saída'];
+  // DefiniÃ§Ã£o dinÃ¢mica das colunas
+  const headersBase = ['Data', 'Entrada', 'SaÃ­da (AlmoÃ§o)', 'Volta (AlmoÃ§o)', 'SaÃ­da'];
   const headers = INCLUIR_COLUNA_EXTRAS
     ? [...headersBase, 'Extras', 'Meta', 'Trabalhado', 'Saldo']
     : [...headersBase, 'Meta', 'Trabalhado', 'Saldo'];
 
   const totalCols = headers.length;
 
-  // Cabeçalho
+  // CabeÃ§alho
   const headerRow = sheet.getRow(startRow);
   headerRow.values = headers;
   headerRow.font = { name: 'Arial', size: 11, bold: true, color: { argb: COLORS.textHeader } };
@@ -237,7 +237,7 @@ function estilizarTabela(sheet: any, rows: RelatorioRow[], startRow: number) {
   headerRow.alignment = { horizontal: 'center', vertical: 'middle' };
   headerRow.height = 30;
 
-  // Função para pegar índice 1-based
+  // FunÃ§Ã£o para pegar Ã­ndice 1-based
   const col = (index0: number) => index0 + 1;
 
   // Linhas
@@ -257,9 +257,9 @@ function estilizarTabela(sheet: any, rows: RelatorioRow[], startRow: number) {
 
     // Colunas de batidas
     currentRow.getCell(col(1)).alignment = { horizontal: 'center', vertical: 'middle' }; // Entrada
-    currentRow.getCell(col(2)).alignment = { horizontal: 'center', vertical: 'middle' }; // Saída almoço
-    currentRow.getCell(col(3)).alignment = { horizontal: 'center', vertical: 'middle' }; // Volta almoço
-    currentRow.getCell(col(4)).alignment = { horizontal: 'center', vertical: 'middle' }; // Saída
+    currentRow.getCell(col(2)).alignment = { horizontal: 'center', vertical: 'middle' }; // SaÃ­da almoÃ§o
+    currentRow.getCell(col(3)).alignment = { horizontal: 'center', vertical: 'middle' }; // Volta almoÃ§o
+    currentRow.getCell(col(4)).alignment = { horizontal: 'center', vertical: 'middle' }; // SaÃ­da
 
     const idxMeta = INCLUIR_COLUNA_EXTRAS ? 6 : 5; // index0
     const idxTrabalhado = INCLUIR_COLUNA_EXTRAS ? 7 : 6;
@@ -309,9 +309,9 @@ function estilizarTabela(sheet: any, rows: RelatorioRow[], startRow: number) {
   // Larguras
   sheet.getColumn(1).width = 16; // Data
   sheet.getColumn(2).width = 12; // Entrada
-  sheet.getColumn(3).width = 16; // Saída almoço
-  sheet.getColumn(4).width = 16; // Volta almoço
-  sheet.getColumn(5).width = 12; // Saída
+  sheet.getColumn(3).width = 16; // SaÃ­da almoÃ§o
+  sheet.getColumn(4).width = 16; // Volta almoÃ§o
+  sheet.getColumn(5).width = 12; // SaÃ­da
 
   if (INCLUIR_COLUNA_EXTRAS) {
     sheet.getColumn(6).width = 28; // Extras
@@ -341,17 +341,17 @@ export async function gerarRelatorioExcel(
   const totalCols = INCLUIR_COLUNA_EXTRAS ? 9 : 8;
 
   // 1. ABA GERAL
-  const sheetGeral = workbook.addWorksheet('Visão Geral', { views: [{ showGridLines: false }] });
+  const sheetGeral = workbook.addWorksheet('VisÃ£o Geral', { views: [{ showGridLines: false }] });
 
-  // Título
+  // TÃ­tulo
   sheetGeral.mergeCells(1, 1, 1, totalCols);
   const titleCell = sheetGeral.getCell(1, 1);
-  titleCell.value = 'Relatório de Ponto';
+  titleCell.value = 'RelatÃ³rio de Ponto';
   titleCell.font = { name: 'Arial', size: 20, bold: true, color: { argb: 'FF1E293B' } };
   titleCell.alignment = { vertical: 'middle', horizontal: 'left' };
   sheetGeral.getRow(1).height = 35;
 
-  // Subtítulo (nome + data)
+  // SubtÃ­tulo (nome + data)
   sheetGeral.mergeCells(2, 1, 2, totalCols);
   const subTitleCell = sheetGeral.getCell(2, 1);
   const nomeExibicao = userName ? `${userName}  |  ` : '';
@@ -387,7 +387,7 @@ export async function gerarRelatorioExcel(
     bottom: { style: 'thin', color: { argb: COLORS.border } },
   };
 
-  // Gráfico
+  // GrÃ¡fico
   const chartPng = renderChartToBase64(rows, 'Desempenho Geral');
   if (chartPng) {
     const imageId = workbook.addImage({ base64: chartPng, extension: 'png' });
@@ -418,7 +418,7 @@ export async function gerarRelatorioExcel(
     tCell.font = { name: 'Arial', size: 16, bold: true, color: { argb: 'FF1E293B' } };
     sheetMes.getRow(1).height = 30;
 
-    // Subtotal do mês
+    // Subtotal do mÃªs
     let saldoMinutosMes = 0;
     rowsMes.forEach((r) => (saldoMinutosMes += r.saldoMinutos));
     const saldoMesStr = formatarMinutos(saldoMinutosMes);
@@ -426,12 +426,12 @@ export async function gerarRelatorioExcel(
 
     sheetMes.mergeCells(2, 1, 3, 4);
     const subLabel = sheetMes.getCell(2, 1);
-    subLabel.value = `Saldo do Mês: ${saldoMesStr}`;
+    subLabel.value = `Saldo do MÃªs: ${saldoMesStr}`;
     subLabel.font = { name: 'Arial', size: 14, bold: true, color: { argb: isNegMes ? COLORS.textRed : COLORS.textGreen } };
     subLabel.alignment = { horizontal: 'left', vertical: 'middle' };
 
-    // Gráfico do mês
-    const chartMesPng = renderChartToBase64(rowsMes, `Saldo Diário - ${nomeMes}`);
+    // GrÃ¡fico do mÃªs
+    const chartMesPng = renderChartToBase64(rowsMes, `Saldo DiÃ¡rio - ${nomeMes}`);
     if (chartMesPng) {
       const imgId = workbook.addImage({ base64: chartMesPng, extension: 'png' });
       sheetMes.addImage(imgId, {
@@ -451,7 +451,7 @@ export async function gerarRelatorioExcel(
   );
 }
 
-// Mantido CSV (agora com colunas também)
+// Mantido CSV (agora com colunas tambÃ©m)
 function escapeCsv(value: string) {
   if (value.includes('"')) value = value.replace(/"/g, '""');
   if (value.includes(';') || value.includes('\n') || value.includes('\r') || value.includes('"')) return `"${value}"`;
@@ -464,7 +464,7 @@ export function gerarRelatorioCSV(pontos: Ponto[], ajustes: AjusteBanco[], saldo
 
   lines.push([escapeCsv('Saldo Total Atual'), escapeCsv(saldoTotal)].join(';'));
 
-  const headersBase = ['Data', 'Entrada', 'Saída (Almoço)', 'Volta (Almoço)', 'Saída'];
+  const headersBase = ['Data', 'Entrada', 'SaÃ­da (AlmoÃ§o)', 'Volta (AlmoÃ§o)', 'SaÃ­da'];
   const headers = INCLUIR_COLUNA_EXTRAS
     ? [...headersBase, 'Extras', 'Meta', 'Trabalhado', 'Saldo']
     : [...headersBase, 'Meta', 'Trabalhado', 'Saldo'];
@@ -482,6 +482,7 @@ export function gerarRelatorioCSV(pontos: Ponto[], ajustes: AjusteBanco[], saldo
   const csv = '\uFEFF' + lines.join('\n');
   downloadBlob(`Relatorio_Ponto_${dateKeyLocal()}.csv`, 'text/csv;charset=utf-8;', csv);
 }
+
 
 
 

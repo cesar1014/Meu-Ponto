@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import { HeartPulse, Trash2 } from 'lucide-react';
@@ -26,9 +26,9 @@ function toDateKey(iso: string) {
 
 const LABEL_TIPOS: Record<TipoPonto, string> = {
     ENTRADA: 'Entrada',
-    SAIDA_ALMOCO: 'Saída almoço',
-    VOLTA_ALMOCO: 'Volta almoço',
-    SAIDA: 'Saída',
+    SAIDA_ALMOCO: 'SaÃ­da almoÃ§o',
+    VOLTA_ALMOCO: 'Volta almoÃ§o',
+    SAIDA: 'SaÃ­da',
     OUTRO: 'Outro',
 };
 
@@ -131,7 +131,7 @@ export function ModalNovoAjuste({
         if (tipo === 'ATESTADO') {
             const at = new Date(`${date}T12:00`);
             if (Number.isNaN(+at)) {
-                setErro('Data inválida.');
+                setErro('Data invÃ¡lida.');
                 return;
             }
             aoSalvar({
@@ -139,7 +139,7 @@ export function ModalNovoAjuste({
                 atISO: at.toISOString(),
                 tipo: 'ATESTADO',
                 minutos: 0, // 0 minutes for atestado - it just abonates the day
-                justificativa: just.trim() || 'Atestado médico',
+                justificativa: just.trim() || 'Atestado mÃ©dico',
             });
             return;
         }
@@ -151,12 +151,12 @@ export function ModalNovoAjuste({
         }
         const normalizedTime = normalizeTimeValue(time);
         if (!normalizedTime) {
-            setErro('Hora inválida.');
+            setErro('Hora invÃ¡lida.');
             return;
         }
         const at = new Date(`${date}T${normalizedTime}`);
         if (Number.isNaN(+at)) {
-            setErro('Data/hora inválida.');
+            setErro('Data/hora invÃ¡lida.');
             return;
         }
         aoSalvar({
@@ -171,7 +171,7 @@ export function ModalNovoAjuste({
     const salvarPontos = () => {
         setErro('');
         if (!aoSalvarPontos) {
-            setErro('Funcionalidade não disponível.');
+            setErro('Funcionalidade nÃ£o disponÃ­vel.');
             return;
         }
 
@@ -244,7 +244,7 @@ export function ModalNovoAjuste({
                         Ajuste manual
                     </div>
                     <div className="mt-1 text-lg font-semibold">
-                        {modo === 'horas' ? (tipo === 'ATESTADO' ? 'Atestado Médico' : 'Crédito / Débito') : 'Inserir Pontos'}
+                        {modo === 'horas' ? (tipo === 'ATESTADO' ? 'Atestado MÃ©dico' : 'CrÃ©dito / DÃ©bito') : 'Inserir Pontos'}
                     </div>
                 </div>
 
@@ -268,7 +268,7 @@ export function ModalNovoAjuste({
                         color: modo === 'horas' ? 'var(--accentText)' : 'var(--text)',
                     }}
                 >
-                    ⏱ Ajustar Horas
+                    â± Ajustar Horas
                 </button>
 
                 <button
@@ -280,7 +280,7 @@ export function ModalNovoAjuste({
                         color: modo === 'pontos' ? 'var(--accentText)' : 'var(--text)',
                     }}
                 >
-                    📍 Inserir Pontos
+                    ðŸ“ Inserir Pontos
                 </button>
             </div>
 
@@ -297,7 +297,7 @@ export function ModalNovoAjuste({
                                 color: tipo === 'CREDITO' ? 'var(--pos)' : 'var(--text)',
                             }}
                         >
-                            + Crédito
+                            + CrÃ©dito
                         </button>
 
                         <button
@@ -309,7 +309,7 @@ export function ModalNovoAjuste({
                                 color: tipo === 'DEBITO' ? 'var(--neg)' : 'var(--text)',
                             }}
                         >
-                            - Débito
+                            - DÃ©bito
                         </button>
                     </div>
 
@@ -323,7 +323,7 @@ export function ModalNovoAjuste({
                         }}
                     >
                         <HeartPulse className="mr-2 inline h-4 w-4" />
-                        Atestado Médico
+                        Atestado MÃ©dico
                     </button>
 
                     {tipo === 'ATESTADO' ? (
@@ -353,7 +353,7 @@ export function ModalNovoAjuste({
                             >
                                 <div className="flex items-center gap-2">
                                     <HeartPulse className="h-4 w-4" />
-                                    <span>O dia será abonado (não contará como falta)</span>
+                                    <span>O dia serÃ¡ abonado (nÃ£o contarÃ¡ como falta)</span>
                                 </div>
                             </div>
 
@@ -362,7 +362,7 @@ export function ModalNovoAjuste({
                                 onChange={(e) => setJust(e.target.value)}
                                 className="mt-3 w-full rounded-2xl border px-3 py-2 text-sm outline-none"
                                 style={{ borderColor: 'var(--border)', background: 'var(--card2)', color: 'var(--text)' }}
-                                placeholder="Observação (opcional)"
+                                placeholder="ObservaÃ§Ã£o (opcional)"
                             />
                         </>
                     ) : (
@@ -466,7 +466,7 @@ export function ModalNovoAjuste({
 
                     <div className="mt-3 space-y-2">
                         <div className="text-xs" style={{ color: 'var(--muted2)' }}>
-                            Pontos do dia (deixe em branco para não incluir)
+                            Pontos do dia (deixe em branco para nÃ£o incluir)
                         </div>
 
                         {TIPOS_PONTO.map((tipoPonto) => (
@@ -563,6 +563,7 @@ export function ModalNovoAjuste({
         </ModalBase>
     );
 }
+
 
 
 

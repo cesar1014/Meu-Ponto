@@ -1,6 +1,6 @@
-# 📍 Meu Ponto
+﻿# ðŸ“ Meu Ponto
 
-> **Sistema Inteligente de Controle de Jornada e Gestão de Horas**
+> **Sistema Inteligente de Controle de Jornada e GestÃ£o de Horas**
 
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -8,81 +8,82 @@
 
 ---
 
-## 🌐 Acesso ao Sistema
+## ðŸŒ Acesso ao Sistema
 
-🔗 **Aplicação em produção:**  
-👉 https://meupontoha.vercel.app/
-
----
-
-## 📖 Sobre o Projeto
-
-O **Meu Ponto** é uma aplicação web progressiva (PWA) desenvolvida para simplificar e modernizar o controle de jornada de trabalho. O sistema foi projetado com foco em **experiência do usuário**, **confiabilidade dos dados** e **uso offline**, permitindo que o colaborador registre seus pontos de forma rápida, segura e consistente.
-
-O principal diferencial técnico do projeto está na sua arquitetura **Offline-First**, que permite o registro de ponto mesmo sem conexão com a internet, realizando a sincronização automática assim que a conexão é restabelecida.
+ðŸ”— **AplicaÃ§Ã£o em produÃ§Ã£o:**  
+ðŸ‘‰ https://meupontoha.vercel.app/
 
 ---
 
-## 🚀 Funcionalidades Principais
+## ðŸ“– Sobre o Projeto
 
-### 🕒 Gestão de Ponto
-- Registro de ponto em tempo real (Entrada, Pausa, Retorno e Saída)
-- Cálculo automático de horas trabalhadas e saldo diário
-- Visualização clara do status do dia
-- Solicitação de ajustes retroativos com justificativa
+O **Meu Ponto** Ã© uma aplicaÃ§Ã£o web progressiva (PWA) desenvolvida para simplificar e modernizar o controle de jornada de trabalho. O sistema foi projetado com foco em **experiÃªncia do usuÃ¡rio**, **confiabilidade dos dados** e **uso offline**, permitindo que o colaborador registre seus pontos de forma rÃ¡pida, segura e consistente.
 
-### 📱 Experiência Mobile (PWA)
-- Aplicação instalável (Android, iOS e Desktop)
+O principal diferencial tÃ©cnico do projeto estÃ¡ na sua arquitetura **Offline-First**, que permite o registro de ponto mesmo sem conexÃ£o com a internet, realizando a sincronizaÃ§Ã£o automÃ¡tica assim que a conexÃ£o Ã© restabelecida.
+
+---
+
+## ðŸš€ Funcionalidades Principais
+
+### ðŸ•’ GestÃ£o de Ponto
+- Registro de ponto em tempo real (Entrada, Pausa, Retorno e SaÃ­da)
+- CÃ¡lculo automÃ¡tico de horas trabalhadas e saldo diÃ¡rio
+- VisualizaÃ§Ã£o clara do status do dia
+- SolicitaÃ§Ã£o de ajustes retroativos com justificativa
+
+### ðŸ“± ExperiÃªncia Mobile (PWA)
+- AplicaÃ§Ã£o instalÃ¡vel (Android, iOS e Desktop)
 - Funciona como aplicativo nativo
-- Totalmente utilizável em modo offline
-- Sincronização inteligente de dados
+- Totalmente utilizÃ¡vel em modo offline
+- SincronizaÃ§Ã£o inteligente de dados
 - Interface responsiva e adaptada para celular
 
-### 📊 Relatórios e Exportação
-- Dashboard com visualização gráfica de horas e assiduidade
-- **Exportação profissional de dados em PDF e Excel**, com layout limpo, organizado e pronto para uso administrativo, auditorias ou envio ao RH
-- Espelho de ponto padronizado e legível
+### ðŸ“Š RelatÃ³rios e ExportaÃ§Ã£o
+- Dashboard com visualizaÃ§Ã£o grÃ¡fica de horas e assiduidade
+- **ExportaÃ§Ã£o profissional de dados em PDF e Excel**, com layout limpo, organizado e pronto para uso administrativo, auditorias ou envio ao RH
+- Espelho de ponto padronizado e legÃ­vel
 
-### 🔐 Segurança e Autenticação
-- Autenticação segura com Supabase Auth
-- Login por e-mail ou ID do usuário
-- Recuperação de senha
-- Proteção de rotas autenticadas
+### ðŸ” SeguranÃ§a e AutenticaÃ§Ã£o
+- AutenticaÃ§Ã£o segura com Supabase Auth
+- Login por e-mail ou ID do usuÃ¡rio
+- RecuperaÃ§Ã£o de senha
+- ProteÃ§Ã£o de rotas autenticadas
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## ðŸ› ï¸ Tecnologias Utilizadas
 
-### ⚙️ Stack Principal
+### âš™ï¸ Stack Principal
 
 <p align="left">
   <img src="https://skillicons.dev/icons?i=nextjs,react,ts,tailwind,supabase,postgres,vercel" />
 </p>
 
-### 📌 Detalhamento Técnico
+### ðŸ“Œ Detalhamento TÃ©cnico
 - **Frontend:** Next.js 16 (App Router)
 - **UI:** React 19
 - **Linguagem:** TypeScript
-- **Estilização:** Tailwind
+- **EstilizaÃ§Ã£o:** Tailwind
 - **Backend / BaaS:** Supabase (PostgreSQL + Auth)
 - **PWA:** Service Workers + Manifest
 - **Estado Global:** Context API + Hooks customizados
-- **Exportação:** jsPDF / jsPDF-AutoTable (PDF) + ExcelJS (Excel)
+- **ExportaÃ§Ã£o:** jsPDF / jsPDF-AutoTable (PDF) + ExcelJS (Excel)
 - **Deploy:** Vercel
 
 ---
 
-## 📂 Estrutura do Projeto
+## ðŸ“‚ Estrutura do Projeto
 
 ```bash
-├── app/
-│   ├── auth/           # Login, cadastro e recuperação de senha
-│   ├── api/            # API Routes (Serverless)
-│   ├── components/     # Componentes reutilizáveis
-│   ├── contexts/       # Contextos globais (Auth, Ponto)
-│   ├── hooks/          # Hooks customizados
-│   ├── lib/            # Utilitários e Supabase
-│   ├── services/       # Offline e sincronização
-│   └── pages/          # Telas principais
-├── public/             # Assets, manifest e service worker
-└── migrations/         # Scripts SQL
+â”œâ”€â”€ app/
+â”‚   â”œâ”€â”€ auth/           # Login, cadastro e recuperaÃ§Ã£o de senha
+â”‚   â”œâ”€â”€ api/            # API Routes (Serverless)
+â”‚   â”œâ”€â”€ components/     # Componentes reutilizÃ¡veis
+â”‚   â”œâ”€â”€ contexts/       # Contextos globais (Auth, Ponto)
+â”‚   â”œâ”€â”€ hooks/          # Hooks customizados
+â”‚   â”œâ”€â”€ lib/            # UtilitÃ¡rios e Supabase
+â”‚   â”œâ”€â”€ services/       # Offline e sincronizaÃ§Ã£o
+â”‚   â””â”€â”€ pages/          # Telas principais
+â”œâ”€â”€ public/             # Assets, manifest e service worker
+â””â”€â”€ migrations/         # Scripts SQL
+

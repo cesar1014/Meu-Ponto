@@ -810,7 +810,7 @@ function ResetView({
         className="rounded-2xl p-4 text-sm"
         style={{ background: 'rgba(239,68,68,0.15)', color: 'var(--neg)' }}
       >
-        ⚠️ Esta ação é irreversível! Todos os seus registros de ponto, configurações e ajustes serão perdidos permanentemente.
+        ?? Esta ação é irreversível! Todos os seus registros de ponto, configurações e ajustes serão perdidos permanentemente.
       </div>
 
       {confirmed && (
@@ -1060,3 +1060,4 @@ export function ConfigView({ onClose }: { onClose?: () => void }) {
 
   return null;
 }
+
