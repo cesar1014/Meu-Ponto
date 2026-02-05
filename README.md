@@ -1,6 +1,6 @@
 ﻿# 📍 Meu Ponto
 
-**Sistema Inteligente de Controle de Jornada e Gestão de Horas**
+> **Sistema Inteligente de Controle de Jornada e Gestão de Horas**
 
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
