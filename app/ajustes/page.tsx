@@ -1,4 +1,4 @@
-﻿?'use client';
+﻿'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { startOfWeek, endOfWeek } from 'date-fns';
