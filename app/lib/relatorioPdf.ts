@@ -1,4 +1,4 @@
-﻿'use client';
+﻿?'use client';
 
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
@@ -12,7 +12,7 @@ import {
 } from './pontoStore';
 import { dateKeyLocal, toDateKey } from './dates';
 
-// ConfiguraÃ§Ãµes Globais de Estilo
+// Configurações Globais de Estilo
 const MOSTRAR_GRAFICO = true; // Mude para false se achar que 30 dias ficou poluido
 const DIAS_FILTRO = 30; // Quantidade de dias para filtrar
 
@@ -20,7 +20,7 @@ type ColorTuple = [number, number, number];
 
 const COLORS: { [key: string]: ColorTuple } = {
   textPrimary: [30, 41, 59],    // Slate 800 (Escuro, quase preto)
-  textSecondary: [100, 116, 139], // Slate 500 (Cinza mÃ©dio)
+  textSecondary: [100, 116, 139], // Slate 500 (Cinza médio)
   positive: [22, 163, 74],      // Green 600
   negative: [220, 38, 38],      // Red 600
   headerBg: [241, 245, 249],    // Slate 100
@@ -40,11 +40,11 @@ function drawSaldoChart(doc: jsPDF, items: ChartItem[], startY: number): number 
   const chartH = 45; // Altura um pouco menor para ficar elegante
   const chartY = startY + 12;
   
-  // TÃ­tulo do GrÃ¡fico com fonte melhorada
+  // Título do Gráfico com fonte melhorada
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(11);
   doc.setTextColor(...COLORS.textPrimary);
-  doc.text(`VariaÃ§Ã£o de Saldo (Ãšltimos ${items.length} dias)`, marginX, startY + 6);
+  doc.text(`Variação de Saldo (Últimos ${items.length} dias)`, marginX, startY + 6);
   doc.setFont('helvetica', 'normal'); // Reset
 
   const maxAbs = Math.max(1, ...items.map(i => Math.abs(i.saldo))); 
@@ -101,32 +101,32 @@ export function gerarRelatorioPDF(
 ) {
   const doc = new jsPDF();
   
-  // --- CABEÃ‡ALHO ---
+  // --- CABEÇALHO ---
   
   // 1. Barra Lateral (Identidade visual)
   doc.setFillColor(...COLORS.accent);
   doc.rect(0, 0, 6, 297, 'F');
 
-  // 2. TÃ­tulo Principal
+  // 2. Título Principal
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(24);
   doc.setTextColor(...COLORS.textPrimary);
-  doc.text('RelatÃ³rio de Ponto', 16, 22);
+  doc.text('Relatório de Ponto', 16, 22);
 
-  // 3. SubtÃ­tulo (Nome do UsuÃ¡rio e Data)
-  let headerY = 29; // PosiÃ§Ã£o inicial abaixo do tÃ­tulo
+  // 3. Subtítulo (Nome do Usuário e Data)
+  let headerY = 29; // Posição inicial abaixo do título
 
   if (userName) {
-    // --- ALTERAÃ‡ÃƒO AQUI: Nome em destaque ---
+    // --- ALTERAÇÃO AQUI: Nome em destaque ---
     doc.setFont('helvetica', 'bold'); // Negrito
     doc.setFontSize(14); // Fonte maior (14px)
-    doc.setTextColor(...COLORS.textPrimary); // Cor escura (igual ao tÃ­tulo)
+    doc.setTextColor(...COLORS.textPrimary); // Cor escura (igual ao título)
     doc.text(userName, 16, headerY); // Apenas o nome, sem "Usuario:"
     
     headerY += 7; // Empurra a data para baixo
   }
 
-  // Data de GeraÃ§Ã£o (Agora abaixo do nome se ele existir)
+  // Data de Geração (Agora abaixo do nome se ele existir)
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(10);
   doc.setTextColor(...COLORS.textSecondary); // Cor cinza
@@ -197,10 +197,10 @@ export function gerarRelatorioPDF(
         const time = new Date(p.atISO).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
         return time; 
       })
-      .join(' â€¢ ');
+      .join(' • ');
 
     const batidas = hasAtestado
-      ? (batidasStr ? `${batidasStr} â€¢ Atestado` : 'Atestado')
+      ? (batidasStr ? `${batidasStr} • Atestado` : 'Atestado')
       : (batidasStr || '-');
 
     return {
@@ -212,8 +212,8 @@ export function gerarRelatorioPDF(
     };
   });
 
-  // --- GRÃFICO ---
-  // Ajustamos o inÃ­cio do conteÃºdo baseado se tem nome ou nÃ£o
+  // --- GRÁFICO ---
+  // Ajustamos o início do conteúdo baseado se tem nome ou não
   let currentY = userName ? 52 : 45;
 
   if (MOSTRAR_GRAFICO && diasResumo.length > 0) {

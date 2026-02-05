@@ -1,4 +1,4 @@
-﻿'use client';
+﻿?'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { startOfWeek, endOfWeek } from 'date-fns';
@@ -220,7 +220,7 @@ export default function AjustesPage() {
 
     const just = justificativa.trim();
     if (!just) {
-      setErro('Justificativa Ã© obrigatÃ³ria.');
+      setErro('Justificativa é obrigatória.');
       return;
     }
 
@@ -283,7 +283,7 @@ export default function AjustesPage() {
 
     const minutes = (Number(deltaHh) || 0) * 60 + (Number(deltaMm) || 0);
     if (minutes <= 0) {
-      setErro('Informe uma quantidade de horas vÃ¡lida.');
+      setErro('Informe uma quantidade de horas válida.');
       return;
     }
 
@@ -314,7 +314,7 @@ export default function AjustesPage() {
       <div className="mx-auto w-full max-w-5xl px-4 pt-6 sm:px-6 lg:px-8 xl:px-10">
         <div className="text-2xl font-semibold">Ajustes retroativos</div>
         <p className="mt-1 text-xs" style={{ color: 'var(--muted2)' }}>
-          Registre pontos passados ou ajuste horas com justificativa obrigatÃ³ria.
+          Registre pontos passados ou ajuste horas com justificativa obrigatória.
         </p>
 
         <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_320px]">
@@ -487,7 +487,7 @@ export default function AjustesPage() {
                   onChange={(e) => setJustificativa(e.target.value)}
                   className="mt-2 w-full rounded-2xl border px-3 py-2 text-sm outline-none"
                   style={{ borderColor: 'var(--border)', background: 'var(--card2)', color: 'var(--text)' }}
-                  placeholder="ObrigatÃ³rio"
+                  placeholder="Obrigatório"
                 />
               </div>
 
@@ -515,7 +515,7 @@ export default function AjustesPage() {
 
             <div className="rounded-3xl border p-4" style={{ borderColor: 'var(--border)', background: 'var(--card)' }}>
               <div className="text-xs uppercase tracking-wider" style={{ color: 'var(--muted2)' }}>
-                HistÃ³rico do dia
+                Histórico do dia
               </div>
               {ajustesDia.length === 0 ? (
                 <div className="mt-3 text-sm" style={{ color: 'var(--muted2)' }}>
